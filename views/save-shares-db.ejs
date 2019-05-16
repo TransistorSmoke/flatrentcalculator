@@ -1,0 +1,70 @@
+<% include partials/header %>
+
+
+
+<div role="main" class="save-shares">
+	<div class="container animated fadeIn">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<h1>SAVE SHARES TO DATABASE</h1>
+				<hr class="title-divider">			
+			</div>
+
+			<div class="col-md-12 col-sm-12 save-shares-data">
+				<div class="section-title">
+					<h1>SAVING OF DATA SUCCESSFUL</h1>
+					<h3>The following data have been saved to the database.</h3><br>
+				</div>
+
+				<div class="col-md-12 col-sm-12">
+					<div class="table-responsive">
+						<table class="table table-hover lead table-sm">
+							<thead>
+								<tr>
+									<th scope="col" class="share-right-border">RENT PERIOD</th>
+									<th scope="col" class="share-right-border">TOTAL RENT</th>
+
+										<!-- Renders the row = ROOM OCCUPANTS' NAMES-->
+										<% for(var a = 0; a < roomTenantData.length; a++){ %>
+										<th scope="col" class="share-right-border"><%= roomTenantData[a].first_name.toUpperCase() %> (ROOM 0<%= a%>) </th>
+											<% } %>
+										<!------------------------------------------->
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr>
+									<th><%= insertedData[0].rent_period %></th>
+									<th><%= insertedData[0].total_rent %></th>
+									<th><%= insertedData[0].room_01_master %></th>
+									<th><%= insertedData[0].room_02_common %></th>
+									<th><%= insertedData[0].room_03_common %></th>
+									<th><%= insertedData[0].room_04_common %></th>
+								</tr>
+							</tbody>	
+						</table>	
+
+						
+					</div>	
+				
+				</div>	
+				
+
+			</div>
+			<div class="btn-container form-submit">
+				<a class="btn btn-primary btn-lg steps-btn" href="/" role="button">Go To Home</a>
+				<a class="btn btn-primary btn-lg steps-btn" href="/register" role="button">Go To Register</a>
+				<a class="btn btn-primary btn-lg steps-btn" href="/calculate" role="button">Go To Calculate</a>
+			</div>
+			<!-- ==== END OF SHARE DISTRIBUTION ==== -->
+
+		</div>	
+			
+
+
+
+	</div>	
+</div>
+
+
+<% include partials/footer %>

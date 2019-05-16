@@ -1,0 +1,125 @@
+<% include partials/header %>
+
+<div role="main" class="register">
+		<div class="container animated fadeIn">	
+			<div class="content-box">
+				<div class="content-box-inner">
+					<div class="row">
+							<div class="col-md-12 col-sm-12 title-margin-bottom">
+									<h1>STEP 1: REGISTER PUB COST</h1>
+									<hr class="title-divider">
+							</div>
+						
+							<div class="col-md-6 col-sm-6">
+								<i class="fab fa-wpforms fa-7x"></i><br>
+								<p>Input and save monthly PUB costs here.<br><br>Registered information will be used for calculation of shares per room/tenant.</p>
+							</div>						
+							
+							<div class="col-md-6 col-sm-6 register-form">
+								<form id="register" class="needs-validation" method="POST" action="/register_pub"  novalidate>
+									<div class="form-group row">
+										<label for="pubYear" class="col col-form-label">YEAR:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="billing-year"  name="pubYear" placeholder="Billing Year" required>
+												<div class="invalid-feedback">
+													Input billing year
+												</div>
+										</div>
+									</div>
+						
+									<div class="form-group row">
+										<label for="dateFrom" class="col col-form-label">DATE FROM:</label>
+										<div class="col-sm-8">
+											<input type="date" id="date-from"  class="form-control" name="dateFrom" placeholder="Date From" onchange="regCompareDates()" required>
+											<div class="invalid-feedback">
+												Input start of billing period
+											</div>							
+										</div>
+							
+									</div>					
+						
+									<div class="form-group row">
+										<label for="dateTo" class="col col-form-label">DATE TO:</label>
+										<div class="col-sm-8">
+											<input type="date" id="date-to" class="form-control" name="dateTo" placeholder="Date To" onchange="regCompareDates()" required>
+											<div class="invalid-feedback">
+												Input end of billing period
+											</div>									
+										</div>
+									</div>	
+						
+									<div class="form-group row">
+										<label for="totalCost" class="col col-form-label">TOTAL COST: </label>
+										<div class="col-sm-8">
+											<input type="number" id="total-cost" class="form-control" name="cost" step="0.01" placeholder="0.00" required>
+											<div class="invalid-feedback">
+												Input total PUB cost
+											</div>									
+										</div>
+									</div>						
+						
+																
+									<div class="form-submit">
+										<button type="submit" id="reg-submit" class="btn btn-primary btn-lg" form="register">Register</button>	
+									</div>
+									<!-- <div class="form-submit">
+										<button type="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reg-date-error">Modal Test</button>	
+									</div> -->
+								</form> 
+							</div>
+
+							<div class="col-md-12 col-sm-12 text-center mt-2">
+									<a class="btn btn-primary btn-lg" href="/">Back To Home</a>	
+							</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+
+		<div class="modal fade" id="reg-date-error" tabindex="-1" role="dialog"  aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title">ERROR: DATE RANGE</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>		
+					</div>
+					
+					<div class="modal-body">
+						<p>DATE FROM should be <strong>earlier</strong> than DATE TO. Please fix the date range/period.</p>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary error-close" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>		
+</div>
+
+
+
+
+<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function() {
+		  'use strict';
+		  window.addEventListener('load', function() {
+			// Fetch all the forms we want to apply custom Bootstrap validation styles to
+			var forms = document.getElementsByClassName('needs-validation');
+			// Loop over them and prevent submission
+			var validation = Array.prototype.filter.call(forms, function(form) {
+			  form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === false) {
+				  event.preventDefault();
+				  event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+			  }, false);
+			});
+		  }, false);
+		})();
+	</script>
+
+<% include partials/footer %>

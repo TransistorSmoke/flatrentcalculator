@@ -1,0 +1,161 @@
+<% include partials/header %>
+
+<div role="main" class="home home-bg">
+  <div class="container animated fadeIn">
+    <div class="content-box">
+      <div class="content-box-inner">
+        <div class="row">
+          <!-- Navigation section here -->
+          <div class="col-md-12 col-sm-12 header">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div
+                class="collapse navbar-collapse justify-content-center order-2 responsive-nav-center"
+                id="navbarSupportedContent"
+              >
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="/register">Register PUB</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="/calculate">Calculate Shares</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="/pub-records"
+                      >Check PUB Records</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-box">
+      <div class="content-box-inner">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 page-title">
+            <h1>RENT SHARE CALCULATOR</h1>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <p>
+              This application is created to simplify the calculation and
+              sending of the rent and utility share of each occupant of this
+              flat. The monthly rent is paid on the first day of month.
+              Therefore, share per person is targetted to be sent out at least a
+              week prior to the rent payment, in order to collect each one's
+              payment on time.
+            </p>
+
+            <p>
+              Water, electric, gas (PUB bills) and internet bills are equally
+              divided among the tenants. Proper division of shares is conducted
+              according to the number of occupants per room for a specific
+              billing period.
+            </p>
+
+            <div class="col-12 get-started">
+              <a class="btn btn-primary btn-lg" href="#steps" role="button"
+                >Get started</a
+              >
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 home-img">
+            <img src="/img/home-calc.jpg" alt="Home - Calculator" />
+            <span>Figure 01. OK housemates, let's pay our rent.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="steps" class="steps steps-bg">
+  <div class="container animated fadeIn">
+    <div class="content-box-inner">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <h1>HOW TO USE THE APPLICATION</h1>
+        </div>
+
+        <div class="col-md-4 col-sm-4">
+          <h2>STEP 01</h2>
+          <hr class="step-divider" />
+          <i class="fas fa-database fa-5x"></i>
+          <p>Register the monthly PUB cost to the database.</p>
+          <p>
+            Enter the <span>billing year</span>,
+            <span>billing duration</span> and <span>total PUB cost</span>.
+          </p>
+
+          <a
+            class="btn btn-primary btn-lg steps-btn"
+            href="/register"
+            role="button"
+            >Register PUB Cost</a
+          >
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <h2>STEP 02</h2>
+          <hr class="step-divider" />
+          <i class="fas fa-calculator fa-5x"></i>
+          <p>
+            Go to <strong>CALCULATE PAYABLES</strong> and set the billing
+            period.
+          </p>
+
+          <p>
+            Total rent cost per tenant can now be calculated.
+          </p>
+
+          <a
+            class="btn btn-primary btn-lg steps-btn"
+            href="/calculate"
+            role="button"
+            >Calculate Shares</a
+          >
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <h2>STEP 03</h2>
+          <hr class="step-divider" />
+          <i class="fas fa-envelope fa-5x"></i>
+          <p>
+            Save the resulting calculation results, to the database and/or PDF.
+          </p>
+          <p>
+            After securing the records, send this information to all tenants via
+            email.
+          </p>
+
+          <a
+            class="btn btn-primary btn-lg steps-btn"
+            href="#steps"
+            role="button"
+            >Send Through Email</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer %>

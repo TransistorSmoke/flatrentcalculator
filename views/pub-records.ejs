@@ -1,0 +1,51 @@
+<% include partials/header %>
+
+<div role="main" class="pub-records" >
+        <div class="container animated fadeIn">
+            <div class="content-box">
+                <div class="content-box-inner">
+                    <div class="row" >
+                        <div class="col-md-12 col-sm-12">
+                            <h1>RECORDS OF PUB BILLS</h1>
+                            <hr class="title-divider">		
+                            <p>The following are records of the monthly PUB bills incurred and paid by the tenants of this flat.</p>
+                        </div>                            
+                    </div>
+                        <!-- RETRIEVED RECORDS OF PUB BILLS -->
+                        <div class="col-md-12 col-sm-12 mt-5 text-center pub-record-table">                 
+                            <div class="table-responsive">
+                                <table class="table table-hover lead table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">BILLING YEAR</th>
+                                            <th scope="col">DATE FROM</th>
+                                            <th scope="col">DATE TO</th>
+                                            <th scope="col">COST</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(var x=0; x<result.length; x++){ %> 
+                                        <tr>
+                                            <td>	<%=  result[x].billing_year%>	</td>
+                                            <td>	<%=  moment(result[x].date_from).format('DD-MMM-YYYY') %>	</td>
+                                            <td> 	<%=  moment(result[x].date_to).format('DD-MMM-YYYY') %>		</td>
+                                            <td>	<%=  '$' + result[x].pub_cost %>	</td>
+                                        </tr>
+                                        <% } %>																			
+                                    </tbody>
+                                </table>
+                            </div>				
+                        </div>	
+                        <!-- END OF SUMMARY TABLE -->	
+                
+                        <div class="col-md-12 col-sm-12 text-center mt-5">
+                            <a class="btn btn-primary btn-lg" href="/">Back To Home</a>	
+                        </div>                
+                                    
+                </div>
+            </div>
+        </div>
+</div>
+
+<% include partials/footer %>
+

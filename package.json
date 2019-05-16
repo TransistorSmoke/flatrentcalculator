@@ -1,0 +1,22 @@
+{
+  "name": "flat_rent_system",
+  "version": "1.0.0",
+  "description": "Application for rent and PUB share calculation for Blk 439 House 11-437",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Alegado",
+  "license": "ISC",
+  "dependencies": {
+    "animate.css": "^3.7.0",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "html2canvas": "^1.0.0-rc.1",
+    "jspdf": "^1.5.3",
+    "moment": "^2.23.0",
+    "moment-range": "^4.0.1",
+    "mysql": "^2.16.0"
+  }
+}

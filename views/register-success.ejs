@@ -1,0 +1,61 @@
+<% include partials/header %>
+
+<div role="main" class="register-success">
+    <div class="container animated fadeIn">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+             <h1>SUCCESSFUL REGISTRATION</h1>
+            <hr class="title-divider">
+            </div>
+        
+            <div class="col-md-12 col-sm-12">
+                <p>
+                    The PUB information for 
+                        <span><%= moment(dateFrom).format('DD-MMM-YYYY') %> to <%= moment(dateTo).format('DD-MMM-YYYY') %></span> 
+                    has been saved to the database.
+                </p>
+                <h2>COST = <%= '$' + cost %></h2>
+            </div>
+
+        
+        
+        <div class="col-md-12 col-sm-12">
+            <div class="table-responsive-md">
+                <table class="table table-hover lead">
+                      <thead>
+                        <tr>
+                            <th scope="col">BILLING YEAR</th>
+                            <th scope="col">DATE FROM</th>
+                            <th scope="col">DATE TO</th>
+                            <th scope="col">TOTAL PUB COST:</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                        <% for(var x=0; x<result.length; x++){ %>     
+                        <tr class="reg-success">
+                            <td>	<%=  result[x].billing_year%>	</td>
+                            <td>	<%=  moment(result[x].date_from).format('DD-MMM-YYYY') %> </td>
+                            <td> 	<%=  moment(result[x].date_to).format('DD-MMM-YYYY') %>	</td>
+                            <td>	<%=  '$' + result[x].pub_cost%>	</td>
+                        </tr>    
+                        <% } %>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-sm-12 text-center mt-2">
+            <a class="btn btn-primary btn-lg" href="/">Back To Home</a>	
+    </div>
+
+	</div>
+</div>
+
+<script>
+    setTimeout(function () {
+        // after 6 seconds, redirect page to HOME.
+        window.location = "/";
+    }, 5000)
+</script>
+
+<% include partials/footer %>

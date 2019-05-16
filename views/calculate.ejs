@@ -1,0 +1,94 @@
+<% include partials/header %>
+
+<div role="main" class="calculate" >
+	<div class="container animated fadeIn">
+
+		<div class="content-box">
+			<div class="content-box-inner">
+					<div class="row" >
+							<div class="col-md-12 col-sm-12 title-margin-bottom">
+								<h1>STEP 2: CALCULATE COST PER TENANT</h1>
+								<hr class="title-divider">			
+							</div>
+				
+							<div class="col-md-6 col-sm-6 calculate-form">
+									<form id="calculate" method="POST" action="/shares">
+										<div class="form-group row">
+											<label for="" class="col-md-4 col-form-label">BILLING PERIOD:</label>
+											<div class="col-md-6">
+												<select name="pub_date_duration" id="pub_duration" onchange="displayPUBCost()">
+													<% for (var x=0; x<result.length; x++){ %>	
+														<% 
+															var pubCost = result[x].pub_cost;
+															var formDateFrom = moment(result[x].date_from).format('DD-MMM').toUpperCase(); 
+															var formDateTo = moment(result[x].date_to).format('DD-MMM').toUpperCase(); 
+															var formDurYear = result[x].billing_year; 
+															var durationResult =  '(' + (x+1) + ')  ' + formDateFrom + '  to  ' + formDateTo + ' ' + formDurYear;
+															
+															var momDateFrom = result[x].date_from;
+															var momDateTo = result[x].date_to;
+															var args = [pubCost, momDateFrom, momDateTo, formDurYear];
+														%>	 
+														
+														<!-- Variable args is passed as argument for the POST method. -->								
+														<option value="<%= args %>">
+															<%= durationResult %>									
+														</option>
+													<% } %>								
+												</select>
+											</div>
+										</div>
+					
+										<div class="form-group row">
+											<label for="PUB Bill" class="col-md-4 col-form-label">TOTAL PUB BILL ($):</label>
+												<div class="col-md-6">
+												<input type="text" value="<%= result[0].pub_cost %>" class="form-control" id="pub_cost" placeholder="PUB Total Cost" readonly>
+												</div>
+										</div>
+					
+					
+										<div class="form-group row">
+											<label for="Internet" class="col-md-4 col-form-label">INTERNET ($):</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="internet_cost" value="49.90" placeholder="$49.90" readonly>
+												</div>
+										</div>				   
+					
+										<div class="form-group row">
+											<label for="Rent" class="col-md-4 col-form-label">MONTHLY RENT ($):</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" id="rent_cost" value="2500" placeholder="$2500" readonly>
+												</div>
+										</div>			   
+							
+										<div class="form-submit">
+											<button type="submit" class="btn btn-primary btn-lg" form="calculate">Calculate Shares</button>	
+										</div>						
+									</form>
+				
+							</div>
+				
+							<div class="col-md-6 col-sm-6">
+								<i class="fas fa-file-invoice-dollar fa-7x"></i><br>
+								<p>After the successful registration of the flat's monthly PUB costs, just set the billing period.  
+									Total rent cost per tenant can now be calculated. <br><br>
+									The results of this calculation is forwarded to all tenants so they will now how much they are going to pay for the said billing period.
+								</p>
+							</div>	
+							
+							<div class="col-md-12 col-sm-12 text-center mt-2">
+								<a class="btn btn-primary btn-lg" href="/">Back To Home</a>	
+							</div>
+							
+						</div>
+			</div>
+		</div>
+
+
+
+
+	</div>	
+</div>
+
+<% include partials/footer %>
+

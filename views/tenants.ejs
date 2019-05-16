@@ -1,0 +1,45 @@
+<% include partials/header %>
+
+<main role="main" class="container">
+	<div class="row">	
+		<div class="jumbotron">
+				<h1>All Tenants</h1>
+
+				<div class="table-responsive-md">
+					<table class="table table-hover lead">
+						<thead>
+							<tr>
+								<!-- <th scope="col">ROOM NO.</th> -->
+								<th scope="col">ROOM TYPE</th>
+								<th scope="col">LAST NAME</th>
+								<th scope="col">FIRST NAME</th>
+								<th scope="col">TRANSFER DATE</th>
+							</tr>
+						</thead>
+						<tbody>
+
+						<% for(var x=0; x<result.length; x++){ %> 
+						<tr>
+								<!-- <td>	<%=  result[x].room_no%>	</td> -->
+								<td>	<%=  result[x].room_type.toUpperCase() %>	</td>
+								<td> 	<%=  result[x].last_name.toUpperCase() %>		</td>
+								<td>	<%=  result[x].first_name.toUpperCase() %>	</td>
+								<td>	<%=  moment(result[x].date_joined).format('DD-MMM-YYYY') %>	</td>  
+						</tr>
+						<% } %>
+							
+					</table>
+				</div>
+
+
+		</div>
+	</div>
+
+
+	
+
+
+</main>
+
+
+<% include partials/footer %>

@@ -1,0 +1,700 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,700');
+
+/* --- ===== COLOR THEMES ===== --- */
+/*
+		#0F2D4C	: SPACE CADET
+		#3387CC : BLEU DE FRANCE
+		#C5D3E8 : COLUMBIA BLUE
+		#F7F7FF	: GHOST WHITE
+		#001323	: RICH BLACK 
+		#FCE561	: MAIZE
+		#FCB813	: DARK TANGERINE
+		#D93D04	: SINOPIA
+		#B4B8AB	: ASH GRAY
+		#FF8977	: TEA ROSE
+*/
+/* --- ========================== --- */
+
+/* --- ===== COMMON STYLES ===== --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: #fff;
+  background-color: #0f2d4c;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Roboto Slab', serif;
+}
+
+p {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container {
+  min-height: 100%;
+}
+
+.logo {
+  margin: 0;
+}
+
+.row {
+  min-height: 100%;
+}
+
+.title-divider {
+  border: 1.5px solid #f7f7ff;
+  margin: 0 auto;
+}
+
+.page-title {
+  margin-bottom: 12px;
+}
+
+/* .home h1,
+.steps h1, 
+.error h1,
+.register h1,
+.register-success h1,
+.calculate h1,
+.shares h1,
+.save-shares h1,
+.pub-records h1{ */
+.container h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+a {
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  border: 2px solid white !important;
+  margin: 20px 4px;
+}
+
+a:hover {
+  background-color: #3387cc !important;
+  border: 2px solid #f7f7ff !important;
+}
+
+.form-submit {
+  text-align: center;
+}
+
+.content-box {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.content-box-inner {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0.4rem 0;
+}
+
+.content-box-inner p {
+  margin: 10px 12px 0 12px;
+}
+
+.title-margin-bottom {
+  margin-bottom: 3rem;
+}
+
+/* --- ====================== --- */
+
+/* ---- ===== NAVIGATION STYLES ===== ----*/
+.home .header ul li a {
+  border: none !important;
+  color: #fff !important;
+  text-transform: uppercase;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.2rem;
+  margin: 0.8rem;
+}
+
+.home .header ul li a:hover {
+  border: none !important;
+  background: none !important;
+  color: #3387cc !important;
+
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+}
+
+/* ---- ===== HOME SECTION STYLES ===== ---- */
+.home,
+.steps,
+.register,
+.calculate,
+.shares,
+.pub-records,
+.error {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-bg {
+  background-color: #0f2d4c;
+}
+
+.home p {
+  margin-top: 20px;
+}
+
+.home .row .testing {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  color: #f7f7ff;
+  text-align: center;
+}
+
+.home a {
+  border-radius: 0;
+  background-color: transparent;
+  border: 2px solid white !important;
+  margin: 20px 0;
+}
+
+.home a:hover {
+  background-color: #3387cc;
+}
+
+.home-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-img img {
+  max-width: 75%;
+  text-align: center;
+  border: 2.5px solid #c5d3e8;
+}
+
+.home .home-img span {
+  font-size: 0.7rem;
+  font-style: italic;
+  margin: 12px 0;
+}
+
+.get-started {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 1rem;
+}
+
+/* ---- ===== STEPS SECTION STYLES ===== ---- */
+.steps {
+  text-align: center;
+  color: #001323;
+  font-size: 1.2rem;
+}
+
+.steps-bg {
+  background-color: #f7f7ff;
+}
+
+.steps h2 {
+  margin: 20px 0;
+}
+
+.steps p {
+  text-align: left;
+}
+
+.steps > .row {
+  display: flex;
+  flex-direction: column;
+}
+
+.steps span {
+  font-weight: bold;
+}
+
+.steps i {
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+  -webkit-transition: opacity 0.25s; /* Safari */
+  transition: opacity 0.25s;
+}
+
+.steps i:hover {
+  opacity: 0.7;
+  filter: alpha(opacity=70); /* For IE8 and earlier */
+
+  -webkit-transition: opacity 0.25s; /* Safari */
+  transition: opacity 0.25s;
+}
+
+.steps a {
+  background-color: #0f2d4c !important;
+  border: 2px solid white !important;
+  margin-top: 2rem !important;
+}
+
+.steps a:hover {
+  background-color: #3387cc !important;
+  border: 2px solid #b4b8ab !important;
+}
+
+.step-divider {
+  border: 2px solid #c5d3e8;
+  width: 50%;
+  margin: 0 auto 2rem auto;
+}
+/* ---- =============================== ---- */
+
+/* ---- ===== REGISTER SECTION STYLES ===== ---- */
+
+.register .row i {
+  margin: 1rem auto;
+  width: 100%;
+  text-align: center;
+}
+
+.register-form {
+  background-color: transparent;
+  padding: 0.75rem;
+  padding-top: 25px;
+}
+
+.register form input {
+  border-radius: 0;
+  border: none;
+}
+
+.register form label {
+  font-size: 1.2rem;
+  padding: 0;
+  margin-left: 14px;
+}
+
+.register button {
+  border-radius: 0;
+  background-color: transparent;
+  border: 2px solid white !important;
+  margin: 1rem 0;
+}
+
+.register #reg-date-error {
+  color: #001323;
+}
+
+#reg-date-error .modal-footer button {
+  color: #001323;
+  background-color: #c5d3e8;
+  border: 2px solid #b4b8ab !important;
+}
+
+#reg-date-error .modal-footer button:hover {
+  color: #001323;
+  background-color: #3387cc;
+}
+
+/* --- === REGISTER FORM VALIDATION MESSAGES === --- */
+.invalid-feedback {
+  color: #ff8977;
+  font-size: 0.7rem;
+  font-style: italic;
+  letter-spacing: 0.75px;
+}
+
+/* ---- ==== REGISTER-SUCCESS SECTION STYLES ==== ----*/
+.register-success {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.register-success span {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* ---- ===== CALCULATE SECTION STYLES ===== ---- */
+.calculate .row i {
+  margin: 1rem auto;
+  width: 100%;
+  text-align: center;
+}
+
+.calculate-form {
+  background-color: transparent;
+  padding: 0.75rem;
+  padding-top: 25px;
+}
+
+.calculate-form select {
+  vertical-align: middle;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.calculate form input {
+  border-radius: 0;
+  border: none;
+}
+
+.calculate form label {
+  font-size: 1.2rem;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.calculate button {
+  border-radius: 0;
+  background-color: transparent;
+  border: 2px solid white !important;
+  margin: 1rem 0;
+}
+
+/* ---- ===== SHARES SECTION STYLES ===== ---- */
+
+/* .shares{ */
+/* swidth: 100%; */
+/* display: flex;
+	justify-content: center;
+	align-items: center; */
+/* margin-top: 2rem;	 */
+/* } */
+
+.shares table {
+  text-align: center;
+}
+
+.share-rent-highlight {
+  width: 97%;
+  background-color: #c5d3e8;
+  margin: 0 auto;
+}
+
+.share-rent-highlight h3 {
+  text-transform: uppercase;
+  color: #0f2d4c;
+}
+
+.shares tr,
+.shares th,
+.shares td {
+  font-size: 1rem;
+}
+
+.total-rent-share {
+  background-color: #c5d3e8;
+  color: #0f2d4c;
+  -webkit-transition: background-color 0.25s; /* Safari */
+  transition: background-color 0.25s;
+}
+
+/* .total-rent-share th,
+.total-rent-share td{
+	font-size: 0.5rem !important;
+} */
+
+.total-rent-share:hover {
+  background-color: #3387cc !important;
+  -webkit-transition: background-color 0.25s; /* Safari */
+  transition: background-color 0.25s;
+}
+
+.total-rent-share th,
+.total-rent-share td {
+  /* font-size: 1.1rem; */
+  font-weight: bold;
+}
+
+.shares .btn-container {
+  /* display: flex; 
+	justify-content: center; 
+	align-items: center; */
+  /* width: 100%;  */
+  margin: 0.5rem 0;
+}
+
+.shares a {
+  border-radius: 0;
+  background-color: transparent;
+  border: 2px solid white !important;
+  margin: 8px;
+}
+
+.shares button {
+  border-radius: 0;
+  background-color: transparent;
+  border: 2px solid white !important;
+  margin: 1rem 0;
+}
+
+#share-distribution,
+.share-summary,
+#canvas-screenshot,
+.pub-record-table {
+  margin: 1rem 0;
+  padding: 2.5rem 0;
+  border: 4px solid #f7f7ff;
+  text-align: center;
+  background-color: #fff !important;
+  color: #001323;
+}
+
+.share-summary {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#share-distribution-main {
+  display: none;
+}
+
+.share-summary span {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0f2d4c;
+}
+
+#canvas-screenshot {
+  display: none;
+  padding: 0.75rem !important;
+}
+
+#canvas-screenshot p {
+  font-size: 0.9rem !important;
+}
+
+#canvas-share-distribution > .rendered-canvas > canvas {
+  width: 10% !important;
+  height: 10% !important;
+  border: 2px solid #b4b8ab;
+}
+
+#ssDuplicateErrorModal {
+  color: #001323 !important;
+}
+
+#ssDuplicateErrorModal .modal-footer button {
+  color: #001323;
+  padding: 0.4rem 1.5rem;
+}
+
+#ssDuplicateErrorModal .modal-footer button:hover {
+  background-color: #f7f7ff !important;
+  border: 2px solid #c5d3e8 !important;
+}
+
+.shares .form-submit a:nth-child(3):hover {
+  background-color: #ff8977 !important;
+}
+
+.share-hidden-data {
+  display: none;
+}
+
+/* ---- ===== SAVE SHARES TO DATABASED SECTION STYLES ===== ---- */
+.save-shares {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0f2d4c !important;
+}
+
+.save-shares h1 {
+  color: #fff !important;
+}
+
+.save-shares-data h1 {
+  color: #0f2d4c !important;
+}
+
+.save-shares th,
+.save-shares td {
+  font-size: 0.8rem;
+}
+
+.save-shares-data {
+  text-align: center;
+  background-color: #f7f7ff;
+}
+
+.save-shares .btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1.5rem 0 1.5rem 0;
+}
+
+/* ---- ===== PUB RECORDS ===== ---- */
+/* ---- ===== ERROR SECTION STYLES ===== ---- */
+.error {
+  text-align: center;
+}
+
+.error-text {
+  color: #ff8977;
+}
+
+.table-responsive-md table .register-success tr:last-child {
+  background-color: cadetblue;
+}
+
+/* ---- =============================== ---- */
+
+/* 
+select{
+	vertical-align: middle;
+	padding: .375rem .75rem;
+	font-size: 0.8rem;
+	width: 100%;
+}
+
+label{
+	font-weight: 500;
+	text-align: left;
+}
+
+
+.label-radio{
+	margin: 0 8px 0 8px;
+}
+
+.share-in-out{
+	text-align: center;
+}
+
+.addtl-info{
+	text-align: center;
+}
+
+#pub-headcount{
+	display: none;
+}
+
+.headcount-room{
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	border-radius: 10px;
+	margin: 2px 0 2px 0;
+	padding: 4px;
+	text-align: center;
+}
+
+.input-headcount{
+	font-size: 0.85rem;
+}
+
+.hidden{
+	font-size: 0.6rem;
+}
+.step{
+	color: red;
+	font-weight: 800;
+}
+
+.headcount-room a{
+	margin: 12px;
+}
+
+.headcount{
+	font-size: 0.75rem;
+}
+
+.input-headcount{
+	margin: 0 0 15px 0;
+}
+
+.in-out-check{
+	margin: 4px 0 15px 0;
+}
+.headcount a{
+	margin: 12px;
+}
+
+.clear-field{
+	margin: 15px auto 15px auto;
+}
+
+th, td{
+	font-size: 1rem;
+}
+
+.share-right-border{
+	border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.total{
+	border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.total-rent-share{
+	background-color:rgba(0, 0, 0, 0.1);
+}
+
+.pub-records .table td{
+	font-weight: 300;
+}
+
+#share-summary .table tr:last-child{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+	font-weight: 700;
+}
+
+.share {
+	display: none;
+}
+
+.share, .summary, .tenants, .records{
+	border: 5px solid rgba(0, 0, 0, 0.2);
+	border-radius: 12px;
+}
+
+#share-summary tr th:nth-child(2){
+	border-right: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+
+.btn-toggle-share, .btn-save-info, .btn-send-info{
+	margin: 20px 0 30px 0; 
+} */
+
+/* ------------------------------------
+				FOOTER
+-------------------------------------*/
+
+footer {
+  font-size: 0.9em;
+  width: 100%;
+  padding: 8px 0;
+  background: rgb(61, 61, 61);
+  text-align: center;
+}
+
+footer span {
+  font-size: 0.7rem;
+}

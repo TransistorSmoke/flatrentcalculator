@@ -1,0 +1,313 @@
+<% include partials/header %>
+
+<% var pubCost = parseFloat(shareArgs[0]); %>
+<% var internetCost = 49.90; %>
+<% var rentCost = 2500; %>
+<% var calcYear = shareArgs[3]; %>	
+<% var dateFrom = moment(shareArgs[1]).format('YYYY-MM-DD'); %>	
+<% var dateTo = moment(shareArgs[2]).format('YYYY-MM-DD'); %>	
+
+<% var rentPeriod = moment(dateFrom).format('DD MMM YYYY') + " - " + moment(dateTo).format('DD MMM YYYY'); %>
+
+<% var occupantCount = 0; %>
+<% var totalOccupantCount = 0; %>
+<% var roomHeadCount = new Array(result.length); %>		
+<% var pubNetsharePerHead = new Array(result.length); %>	
+<% var finalSharePerHead = new Array(result.length); %>
+<% roomHeadCount.fill(0); %>
+<% pubNetsharePerHead.fill(0); %>
+<% finalSharePerHead.fill(0); %>
+
+<!-- These additional variables are used to save the data to be used for saving to database... -->
+
+<!-- Total rent/share per head-->
+<% var saveDB_rentSharePerHead =  []; %>   
+<% var saveDB_netSharePerHead = []; %>
+<% var saveDB_pubSharePerHead = []; %>
+<% var saveDB_roomNo = []; %>
+
+
+<div role="main" class="shares">
+	<div class="container animated fadeIn">
+		<div class="content-box">
+			<div class="content-box-inner">		
+				<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<h1>RENT FOR THE BILLING PERIOD</h1>
+								<hr class="title-divider">	
+								<p>
+									Save copies of these calculation results either as PDF or images, and send these to the other occupants of the flat. 
+								</p>
+							</div>
+				</div>		
+			</div>
+		</div>
+
+			
+
+
+		<!-- ==== START OF SHARE DISTRIBUTION ==== -->
+		<div class="content-box">
+				<div class="content-box-inner">
+						<div id="share-distribution-main">
+								<div class="col-md-12 col-sm-12" id="share-distribution" >
+									<div class="section-title">
+										<h1>SHARE DISTRIBUTION</h1>
+										<h2>HEADCOUNT PER DAY</h2>
+										<div class="share-rent-highlight">
+											<h3><%= rentPeriod %> </h3>
+										</div>
+									</div>
+							
+									<div class="col-md-12 col-sm-12">
+										<div class="table-responsive">
+											<table class="table table-hover lead table-sm">
+												<thead>
+													<tr>
+														<th scope="col" class="share-right-border">DATE</th>
+								
+															<!-- Renders the row = ROOM OCCUPANTS' NAMES -->
+														<% for(var a = 0; a < result.length; a++){ %>
+														<th scope="col" class="share-right-border"><%= result[a].first_name.toUpperCase() %></th>
+														<% } %>
+								
+														<th scope="col" class="total">TOTAL COUNT</th> 
+															<!-- --------------------------------------- -->
+													</tr>
+												</thead>
+														
+												<tbody>
+								
+															<!-- Loops and generates the date range, using dateFrom and dateTo -- -->
+															<% const range = moment.range(dateFrom, dateTo); %>
+															<% for (let day of range.by('days')) { %>
+															<tr>
+																<th scope="row" class="share-right-border"><%= day.format('DD-MMM-YYYY') %></th>
+																
+																<% for(var x = 0; x < result.length; x++ ){ %>	
+																	<% occupantCount += result[x].occupant_count; %>
+																	<% roomHeadCount[x] += result[x].occupant_count; %>
+																	
+																<td class="share-right-border"><%= result[x].occupant_count %></td>
+																<% } %>
+								
+								
+																<td>
+																		<%= occupantCount %>
+																		<% totalOccupantCount += occupantCount; %>
+																		<% occupantCount = 0; %>
+																</td> 
+															</tr> 
+															<% } %>
+															<!-- ----------------------------------------------------------------- -->
+								
+															
+								
+															<tr>
+																<th>TOTAL HEADCOUNT</th>				
+																<% for(var y = 0; y <result.length; y++){ %>
+																<th>
+																	<%= roomHeadCount[y] %>
+																</th>
+																<% } %>
+																<th><%= totalOccupantCount %></th>
+															</tr>
+															
+															<tr>
+																<th>PUB + INTERNET SHARE</th>
+																<% for(var z = 0; z <result.length; z++){ %>
+																<th>
+																	<% var sharePercentage = (roomHeadCount[z]/totalOccupantCount);
+																		pubNetsharePerHead[z] = ((pubCost + internetCost) * (sharePercentage)).toFixed(2);
+																	%>
+																	<%= '$' + pubNetsharePerHead[z] + ' (' + (sharePercentage * 100) + '%' + ')'; %>
+																</th>
+																<% } %>
+																<td>  </td>
+															</tr>
+								
+								
+															<tr class="total-rent-share">
+																<th>TOTAL RENT SHARES </th>
+																<% for(var z = 0; z <result.length; z++){ %>
+																<th>
+																	<% finalSharePerHead[z] = (parseFloat(pubNetsharePerHead[z]) + result[z].rent_share); %>
+																	<%= '$' + finalSharePerHead[z];  %>
+																</th>
+																<% } %>
+																<td>  </td>
+															</tr> 
+																		
+				
+												</tbody>
+											</table>
+										</div>
+									</div>
+				
+				
+								</div>
+				
+								<div class="col-md-12 col-sm-12" id="canvas-screenshot">
+									<div class="col-md-12 col-sm-12" id="canvas-share-distribution">
+										<h2>SHARE DISTRIBUTION</h2>
+										<p>This is the screenshot of the share distribution table. <br>
+										<strong>Right-click and save a copy of this image file.</strong></p>
+										<div class="rendered-canvas">
+				
+										</div>
+									</div>
+								</div>	
+								
+				
+				
+								<div class="col-md-12 col-sm-12 btn-container form-submit">
+									<a class="btn btn-primary btn-lg" id="generate-img-distribution" onclick="saveDistributionToImg()">Get A Screenshot</a>					
+									<a class="btn btn-primary btn-lg" id="generate-pdf-distribution" onclick="saveDistributionToPDF()">Save To PDF</a>
+									<a class="btn btn-primary btn-lg steps-btn" href="/" role="button">Back To Home</a>
+								</div>
+							</div> 					
+				</div>
+		</div>
+		<!-- ==== END OF SHARE DISTRIBUTION ==== -->
+	
+		
+		<div class="content-box">
+			<div class="content-box-inner">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 btn-container form-submit">
+						<a class="btn btn-primary btn-lg" id="toggle-share-display" onclick="toggleShareDisplay()">Show Share Distribution</a>			
+					</div>
+		
+				</div>
+
+					<!-- SUMMARY TABLE RENDERING -->			
+					<div class="col-md-12 col-sm-12 share-summary" id="pdf-share-summary">
+						<div class="section-title">
+							<h1>SUMMARY OF SHARE PER TENANT</h1>
+						</div> 
+						<p>
+							This is the tabulated summary of payables for the period <span><%= moment(dateFrom).format('DD MMM YYYY') %></span> to <span><%= moment(dateTo).format('DD MMM YYYY') %></span>.<br>
+							Send this information to all tenants via email, and keep a record of this information.
+						</p>
+						
+						<div class="table-responsive mt-3" id="share-summary">
+							<table class="table table-hover lead table-sm">
+								<thead>
+									<tr>
+										<th scope="col"></th>
+										<th>TOTAL</th>
+										<!-- Renders the row = ROOM OCCUPANTS' NAMES -->
+										<% for(var a = 0; a < result.length; a++){ %>
+											<th scope="col"><%= result[a].first_name.toUpperCase() %></th>
+										<% } %>
+					
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr>
+										<th>RENT</th>
+										<th><%= '$' + rentCost %></th>				
+										<% for(var y = 0; y <result.length; y++){ %>
+										<td>
+											<%= '$' + result[y].rent_share%>
+										</td>
+										<% } %>
+									</tr>
+									<tr>
+										<th>Bills (PUB)</th>	
+										<th><%= '$' + pubCost %></th>	
+										
+										<% var pubCostPerHead = (((pubCost) * (sharePercentage)).toFixed(2)); %>
+										<% for(var y = 0; y <result.length; y++){ %>
+										<td>
+										<% saveDB_pubSharePerHead.push(pubCostPerHead); %>
+										<%= '$' + pubCostPerHead; %>
+										</td>
+										<% } %>
+									</tr>
+									<tr>
+										<th>INTERNET</th>	
+										<th><%= '$' + internetCost %></th>
+										
+										<% var netCostPerHead = (internetCost*(sharePercentage)).toFixed(2); %>
+										<% for(var y = 0; y <result.length; y++){ %>
+										<td>
+										<% saveDB_netSharePerHead.push(netCostPerHead); %>
+										<%= '$' + netCostPerHead; %>
+										</td>
+										<% } %>
+									</tr>	
+		
+									
+									<tr class="total-rent-share">
+										<th>TOTAL</th>
+										<% var totalPayable = (parseFloat(rentCost) + parseFloat(pubCost) + parseFloat(internetCost)).toFixed(2); %>	
+										<th><%= '$' + totalPayable;  %></th>
+		
+										
+										<% for(var y = 0; y <result.length; y++){ %>
+										<td>
+										<% saveDB_rentSharePerHead.push(finalSharePerHead[y]); %>
+										<% saveDB_roomNo.push(result[y].room_no); %>
+										<%= '$' + finalSharePerHead[y]; %>
+		
+		
+										</td>
+										<% } %>
+									</tr>																			
+								</tbody>
+							</table>
+						</div>						
+					</div>	
+					<!-- END OF SUMMARY TABLE -->				
+					
+					<div class="share-hidden-data">
+						<form id="save-share" method="POST" action="/save-shares-db">
+							<input type="text" value="<%= totalPayable %>" class="form-control" id="total_payable" name="total_payable">
+							<input type="text" value="<%= rentPeriod %>" class="form-control" id="rent_period" name="rent_period">
+							<input type="text" value="<%= saveDB_rentSharePerHead %>" class="form-control" id="rent_per_head" name="rent_per_head">
+						</form>
+					</div>
+					
+					<div class="col-md-12 col-sm-12 btn-container form-submit">
+						<a class="btn btn-primary btn-lg" onclick="saveSharesToDB()">Save To DB</a>
+						<a class="btn btn-primary btn-lg" id="generate-img-summary" onclick="saveSummaryToImg()">Get A Screenshot</a>	
+						<a class="btn btn-primary btn-lg" onclick="saveSharesToPDF()">Save To PDF</a>
+						<a class="btn btn-primary btn-lg steps-btn" href="/" role="button">Back To Home</a>
+					</div>					
+				
+			</div> 
+		</div> 
+		
+	</div>	
+	
+	<!-- === This is the modal to display the error notice for the attempt on duplicate screenshot generation === -->
+	<!-- === This is specifically placed outside the container in order to work properly. Putting this inside the container will cause the display to darken and hang up. -->
+
+	<!-- MODAL UNUSED -->
+	<!-- <div class="modal fade" id="ssDuplicateErrorModal" tabindex="-1" role="dialog"  aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">ERROR: Duplicate Generation Attempt</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>		
+				</div>
+				
+				<div class="modal-body">
+					<p>Your screenshot is already generated. Save the image now.</p>
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary error-close" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<!-- =========================================================================================================== -->
+</div>
+
+
+<% include partials/footer %>

@@ -1,0 +1,77 @@
+/* Small Devices (mobile portrait: 320 x 568) */
+@media (min-width: 200px) and (max-width: 767px) {
+  .container h1{
+    font-size: 2.5rem;
+  }
+
+  .container h2{
+    font-size: 1.25rem;
+  }
+
+  .container h3{
+    font-size: 1.5rem;
+  }
+
+
+
+
+  .home .header ul li a {
+    padding: 0;
+    text-align: center;
+
+  }  
+
+  .shares .content-box-inner p{
+    font-size: 0.8rem;
+  }
+  
+  .shares tr,
+  .shares th,
+  .shares td{
+    font-size: 0.65rem;
+  }
+
+  .shares .table-sm th,
+  .shares .table-sm td{
+    padding: 0.1rem;    /* need to fit the table contents to a single unscrollable table, for mobile SS */
+  }
+
+  
+  #share-distribution{
+  	padding: 1rem 0;
+  }
+
+
+/* ----- FOR PUB RECORDS PAGE ----- */
+  .pub-records tr,
+  .pub-records th,
+  .pub-records td{
+    font-size: 0.8rem; 
+  }
+
+
+
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container > .row{
+        margin-left: 0 !important;  
+      } 
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+}
